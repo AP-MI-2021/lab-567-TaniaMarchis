@@ -1,5 +1,6 @@
 from TestsLab567.testCRUD import testAdaugaObiect, testStergeObiect, testModificaObiect
 from TestsLab567.testDomain import testObiect
+from TestsLab567.testFunctionalitati import testMutareObiect
 
 
 def runAllTests():
@@ -8,3 +9,4 @@ def runAllTests():
     testAdaugaObiect()
     testStergeObiect()
     testModificaObiect()
+    testMutareObiect()

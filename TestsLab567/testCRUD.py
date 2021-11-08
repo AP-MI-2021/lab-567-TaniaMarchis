@@ -25,10 +25,7 @@ def testStergeObiect():
     assert getById("1", lista) is None
     assert getById("2", lista) is not None
 
-    lista = stergeObiect("3", lista)
 
-    assert len(lista) == 1
-    assert getById("2", lista) is not None
 
 
 def testModificaObiect():
@@ -39,31 +36,12 @@ def testModificaObiect():
 
     lista = modificaObiect("1", "laptop", "Asus", 3000, "Cluj", lista)
 
-    obiectUpdatat = getById("1", lista)
-    assert getId(obiectUpdatat) == "1"
-    assert getNume(obiectUpdatat) == "laptop"
-    assert getDescriere(obiectUpdatat) == "Asus"
-    assert getPret(obiectUpdatat) == 3000
-    assert getLocatie(obiectUpdatat) == "Cluj"
+    assert getId(lista[0]) == "1"
+    assert getNume(lista[0]) == "laptop"
+    assert getDescriere(lista[0]) == "Asus"
+    assert getPret(lista[0]) == 3000
+    assert getLocatie(lista[0]) == "Cluj"
 
-    obiectNeupdatat = getById("2", lista)
-    assert getId(obiectNeupdatat) == "2"
-    assert getNume(obiectNeupdatat) == "telefon"
-    assert getDescriere(obiectNeupdatat) == "iphone"
-    assert getPret(obiectNeupdatat) == 2000
-    assert getLocatie(obiectNeupdatat) == "Sibiu"
-
-    lista = []
-    lista = adaugaObiect("1", "laptop", "Huawei", 4000, "Bucuresti", lista)
-
-    lista = modificaObiect("3", "laptop", "Asus", 3000, "Cluj", lista)
-
-    obiectNeupdatat = getById("1", lista)
-    assert getId(obiectNeupdatat) == "1"
-    assert getNume(obiectNeupdatat) == "laptop"
-    assert getDescriere(obiectNeupdatat) == "Huawei"
-    assert getPret(obiectNeupdatat) == 4000
-    assert getLocatie(obiectNeupdatat) == "Bucuresti"
 
 
 
