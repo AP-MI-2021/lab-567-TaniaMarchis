@@ -49,3 +49,48 @@ def concatenareString(string, valoare, lista):
         else:
             listaNoua.append(obiect)
     return listaNoua
+
+def celMaiMarePretPerLocatie(lista):
+    '''
+    determina cel mai mare pret pt fiecare locatie
+    :param lista: lista de obiecte
+    :return: cel mai mare pret
+    '''
+
+    rezultat = {}
+    for obiect in lista:
+        pret = getPret(obiect)
+        locatie = getLocatie(obiect)
+        if locatie in rezultat:
+            if pret > rezultat[locatie]:
+                rezultat[locatie] = pret
+        else:
+                rezultat[locatie] = pret
+    return rezultat
+
+
+def ordonareDupaPret(lista):
+    '''
+    ordoneaza crescator obiectele in functie de pretul lor
+    :param lista: lista de obiecte
+    :return: lista ordonata
+    '''
+
+    return sorted(lista, key=lambda obiect:getPret(obiect))
+
+
+def sumaPreturilorPerLocatie(lista):
+    '''
+    afiseaza sumele preturilor pt fiecare locatie
+    :param lista: lista de obiecte
+    :return: sumele preturilor
+    '''
+
+    rezultat = {}
+    for obiect in lista:
+        locatie = getLocatie(obiect)
+        if locatie in rezultat:
+            rezultat[locatie] += getPret(obiect)
+        else:
+            rezultat[locatie] = getPret(obiect)
+    return rezultat

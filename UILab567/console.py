@@ -1,6 +1,6 @@
 from DomainLab567.obiect import toString
 from LogicLab567.CRUD import adaugaObiect, stergeObiect, modificaObiect
-from LogicLab567.functionalitate import mutareObiect, concatenareString
+from LogicLab567.functionalitate import mutareObiect, concatenareString, celMaiMarePretPerLocatie, ordonareDupaPret, sumaPreturilorPerLocatie
 
 
 def printMenu():
@@ -10,6 +10,9 @@ def printMenu():
     print("3. Modificare obiect.")
     print("4. Mutarea tuturor obiectelor dintr-o locatie in alta.")
     print("5. Concatenarea unui string la descrierile obiectelor.")
+    print("6. Determinarea celui mai mare pret pentru fiecare locatie.")
+    print("7. Ordonarea obiectelor crescator dupa pret.")
+    print("8. Afișarea sumelor prețurilor pentru fiecare locație.")
     print("a. Afisare obiect.")
     print("x. Iesire.")
 
@@ -65,6 +68,26 @@ def uiConcatenareString(lista):
         return lista
 
 
+def uiCelMaiMarePretPerLocatie(lista):
+
+    rezultat = celMaiMarePretPerLocatie(lista)
+    for locatie in rezultat:
+        print("Locatia {} are pretul maxim de {}".format(locatie, rezultat[locatie]))
+
+
+def uiOrdonareDupaPret(lista):
+
+   listaOrdonata = []
+   listaOrdonata = ordonareDupaPret(lista)
+   showAll(listaOrdonata)
+
+def uiSumaPreturilorPerLocatie(lista):
+
+    rezultat = sumaPreturilorPerLocatie(lista)
+    for locatie in rezultat:
+        print("Locatia {} are suma preturilor egala cu {}".format(locatie, rezultat[locatie]))
+
+
 def showAll(lista):
 
     for obiect in lista:
@@ -88,6 +111,12 @@ def runMenu(lista):
             lista = uiMutareObiect(lista)
         elif optiune == "5":
             lista = uiConcatenareString(lista)
+        elif optiune == "6":
+            uiCelMaiMarePretPerLocatie(lista)
+        elif optiune == "7":
+            uiOrdonareDupaPret(lista)
+        elif optiune == "8":
+             uiSumaPreturilorPerLocatie(lista)
         elif optiune == "a":
             showAll(lista)
         elif optiune == "x":

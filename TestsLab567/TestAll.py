@@ -1,6 +1,6 @@
 from TestsLab567.testCRUD import testAdaugaObiect, testStergeObiect, testModificaObiect
 from TestsLab567.testDomain import testObiect
-from TestsLab567.testFunctionalitati import testMutareObiect
+from TestsLab567.testFunctionalitati import testMutareObiect, testConcatenareString, testCelMaiMarePretPerLocatie, testOrdonareDupaPret, testSumaPreturilorPerAn
 
 
 def runAllTests():
@@ -10,3 +10,7 @@ def runAllTests():
     testStergeObiect()
     testModificaObiect()
     testMutareObiect()
+    testConcatenareString()
+    testCelMaiMarePretPerLocatie()
+    testOrdonareDupaPret()
+    testSumaPreturilorPerAn()
