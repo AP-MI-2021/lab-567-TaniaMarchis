@@ -105,3 +105,88 @@ def testSumaPreturilorPerAn():
     assert rezultat["Cluj"] == 7000
     assert rezultat["Sibiu"] == 5000
 
+
+def testMutareObiectUndoRedo():
+
+    lista = [["1", "laptop", "Huawei", 4000, "Bucuresti"],["2", "telefon", "iphone", 2000, "Sibiu"],["3", "laptop", "asus", 3000, "Cluj"]]
+    undoList = []
+    redoList = []
+
+    rezultat = mutareObiect("Cluj", "Sibiu", lista)
+    undoList.append(lista)
+    redoList.clear()
+    lista = rezultat
+    assert len(lista) == 3
+    assert len(undoList) == 1
+    assert len(redoList) == 0
+
+    if len(undoList) > 0:
+        redoList.append(lista)
+        lista = undoList.pop()
+    assert len(lista) == 3
+    assert len(undoList) == 0
+    assert len(redoList) == 1
+
+    if len(redoList) > 0:
+        undoList.append(lista)
+        lista = redoList.pop()
+    assert len(lista) == 3
+    assert len(undoList) == 1
+    assert len(redoList) == 0
+    assert lista == [["1", "laptop", "Huawei", 4000, "Bucuresti"],["2", "telefon", "iphone", 2000, "Sibiu"],["3", "laptop", "asus", 3000, "Sibiu"]]
+
+
+def testConcatenareStringUndoRedo():
+
+    lista = [["1", "laptop", "Huawei", 4000, "Bucuresti"],["2", "telefon", "iphone", 2000, "Sibiu"],["3", "laptop", "asus", 3000, "Cluj"]]
+    undoList = []
+    redoList = []
+
+    rezultat = concatenareString("bun", 2500, lista)
+    undoList.append(lista)
+    redoList.clear()
+    lista = rezultat
+    assert len(lista) == 3
+    assert len(undoList) == 1
+    assert len(redoList) == 0
+
+    rezultat = concatenareString("nou", 3500, lista)
+    undoList.append(lista)
+    redoList.clear()
+    lista = rezultat
+    assert len(lista) == 3
+    assert len(undoList) == 2
+    assert len(redoList) == 0
+
+    if len(undoList) > 0:
+        redoList.append(lista)
+        lista = undoList.pop()
+    assert len(lista) == 3
+    assert len(undoList) == 1
+    assert len(redoList) == 1
+
+    if len(undoList) > 0:
+        redoList.append(lista)
+        lista = undoList.pop()
+    assert len(lista) == 3
+    assert len(undoList) == 0
+    assert len(redoList) == 2
+
+    if len(redoList) > 0:
+        undoList.append(lista)
+        lista = redoList.pop()
+    assert len(lista) == 3
+    assert len(undoList) == 1
+    assert len(redoList) == 1
+    assert lista == [["1", "laptop", "Huawei bun", 4000, "Bucuresti"],["2", "telefon", "iphone", 2000, "Sibiu"],["3", "laptop", "asus bun", 3000, "Cluj"]]
+
+
+    if len(redoList) > 0:
+        undoList.append(lista)
+        lista = redoList.pop()
+    assert len(lista) == 3
+    assert len(undoList) == 2
+    assert len(redoList) == 0
+    assert lista == [["1", "laptop", "Huawei bun nou", 4000, "Bucuresti"],["2", "telefon", "iphone", 2000, "Sibiu"],["3", "laptop", "asus bun", 3000, "Cluj"]]
+
+

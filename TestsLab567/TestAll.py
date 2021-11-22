@@ -1,6 +1,8 @@
-from TestsLab567.testCRUD import testAdaugaObiect, testStergeObiect, testModificaObiect
+from TestsLab567.testCRUD import testAdaugaObiect, testStergeObiect, testModificaObiect, testUndoRedo, \
+    testStergereUndoRedo, testModificareUndoRedo
 from TestsLab567.testDomain import testObiect
-from TestsLab567.testFunctionalitati import testMutareObiect, testConcatenareString, testCelMaiMarePretPerLocatie, testOrdonareDupaPret, testSumaPreturilorPerAn
+from TestsLab567.testFunctionalitati import testMutareObiect, testConcatenareString, testCelMaiMarePretPerLocatie, \
+    testOrdonareDupaPret, testSumaPreturilorPerAn, testMutareObiectUndoRedo, testConcatenareStringUndoRedo
 
 
 def runAllTests():
@@ -14,3 +16,8 @@ def runAllTests():
     testCelMaiMarePretPerLocatie()
     testOrdonareDupaPret()
     testSumaPreturilorPerAn()
+    testUndoRedo()
+    testStergereUndoRedo()
+    testModificareUndoRedo()
+    testMutareObiectUndoRedo()
+    testConcatenareStringUndoRedo()

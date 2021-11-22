@@ -1,4 +1,4 @@
-from DomainLab567.obiect import creeazaObiect, getId
+from DomainLab567.obiect import creeazaObiect, getId, getPret
 
 def adaugaObiect(id,nume,descriere,pret,locatie,lista):
     '''
@@ -14,6 +14,8 @@ def adaugaObiect(id,nume,descriere,pret,locatie,lista):
 
     if getById(id, lista) is not None:
         raise ValueError("Id-ul exista deja!")
+    if pret < 0:
+        raise ValueError("Pretul trebuie sa fie un numar pozitiv!")
 
     obiect = creeazaObiect(id,nume,descriere,pret,locatie)
     return lista + [obiect]
@@ -56,7 +58,8 @@ def modificaObiect(id,nume,descriere,pret,locatie,lista):
 
     if getById(id, lista) is None:
         raise ValueError("Nu exista un obiect cu id-ul dat!")
-
+    if pret < 0:
+        raise ValueError("Pretul trebuie sa fie un numar pozitiv!")
     listaNoua=[]
     for obiect in lista:
         if getId(obiect)==id:
